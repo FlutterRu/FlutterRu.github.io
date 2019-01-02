@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Vue JS</title>
+</head>
+<body>
+
+<div id="app">
+	<input type="text" v-on:input="changeName">
+	<h1>String: {{ name }}</h1>
+	<h1>Sum:(10 + 60): {{ 10 + 60 }} </h1>
+	<h1>Number: {{ number }} </h1>
+	<h1>Method: {{ sayHello() }} </h1>
+	<h1>If statement: {{ isOk ? 'I am Ok' : 'I am not Ok!' }}</h1>
+	<h1>Fuctions: {{ string.split('').reverse().join('') }}</h1>
+	<h2>
+		<a v-bind:href="url">{{ url }}</a>
+	</h2>	
+	<h2 v-html="link"></h2>
+	<h2>Счетчик = {{ counter }}</h2>
+	<button v-on:click="riseCounter">Увеличить</button>
+
+	<hr>
+
+	<h2 v-on:mouseover="onHover">Счетчик 2 = {{ counter2 }}</h2>
+	<button v-on:click="counter2 += 33">Увеличить</button>
+
+
+</div>
+
+<script src="vue.js"></script>
+<script type="text/javascript">
+	
+	new Vue({
+		el: '#app',
+		data: {
+			name: 'Vue!',
+			number: 100,
+			isOk: false,
+			string: 'My name is Vladimir',
+			url: 'http://google.com',
+			link: '<a href="http://ya.ru">Яндекс</a>',
+			counter: 0,
+			counter2: 0,
+		}, 
+		methods: {
+			changeName: function() {
+				this.name = event.target.value
+			},
+			sayHello: function() {
+				return 'I am function'
+			},
+			riseCounter: function() {
+				this.counter += 5
+			},
+			onHover: function() {
+				event.target.style.color = 'red'
+			},
+		},
+	})
+</script>
+</body>
+</html>
